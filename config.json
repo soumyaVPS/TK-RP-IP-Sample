@@ -1,5 +1,5 @@
 {
-  "host": "http://localhost:8080",
+  "host": "http://soumya-ip-rp-example.herokuapp.com",
   "issuerServiceUrl": "https://issuer.trustedkey.com",
   "walletServiceUrl": "https://wallet.trustedkey.com",
   "callbackRoute": "/oauth/callback",

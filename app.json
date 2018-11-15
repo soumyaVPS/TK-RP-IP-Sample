@@ -1,21 +1,21 @@
 {
   "name": "Relying/Issuing Party Sample",
   "description": "A barebones Node.js app for requesting user's public key and issuing basic claims",
-  "repository": "https://github.com/trustedkey/TK-RP-IP-Sample",
+  "repository": "https://github.com/soumyaVPS/TK-RP-IP-Sample",
   "logo": "https://www.trustedkey.com/wp-content/uploads/2017/02/Trusted-Key-Logo-e1511773113277.png",
   "keywords": ["node", "trustedkey", "relyingparty", "issuingparty"],
   "env": {
     "HOST": {
       "description": "Change 'someappname' to the app name you chose above",
-      "value": "https://someappname.herokuapp.com"
+      "value": "https://soumya-rp-ip.herokuapp.com"
     },
     "CLIENTID": {
       "description": "The client id registered on the trusted key devportal",
-      "value": ""
+      "value": "0cf24443-5eb7-43e0-bda1-817fe741598f"
     },
     "CLIENTSECRET": {
       "description": "The client secret registered on the trusted key devportal",
-      "value": ""
+      "value": "WRQntocJzNv0xZN3tvCWc5DdLurwV8Xm_zp9C_b0Qm8"
     }
   }
 }
