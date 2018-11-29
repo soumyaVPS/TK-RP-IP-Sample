@@ -11,11 +11,11 @@
     },
     "CLIENTID": {
       "description": "The client id registered on the trusted key devportal",
-      "value": "0cf24443-5eb7-43e0-bda1-817fe741598f"
+      "value": "937acede-bdd9-4fd9-a4cc-4cdf527de356"
     },
     "CLIENTSECRET": {
       "description": "The client secret registered on the trusted key devportal",
-      "value": "WRQntocJzNv0xZN3tvCWc5DdLurwV8Xm_zp9C_b0Qm8"
+      "value": "qpEMfJ8rjK5jWGFYEqkuE1fe_N7iTK_rMtKtUlq9q18"
     }
   }
 }
