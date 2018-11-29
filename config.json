@@ -3,7 +3,7 @@
   "issuerServiceUrl": "https://issuer-stg.trustedkey.com",
   "walletServiceUrl": "https://wallet-stg.trustedkey.com",
   "callbackRoute": "/oauth/callback",
-  "clientId": "	98e2e2db5e06e259d055a83aa0a64eb47cd72506",
+  "clientId": "98e2e2db5e06e259d055a83aa0a64eb47cd72506",
   "clientSecret": "a52ed3a3de7b4911cb82479a543f6442cc540e18e8c79dd038f0ac886f805918",
   "claims": ["https://auth-stg.trustedkey.com/publicKey"],
   "port": 80,
