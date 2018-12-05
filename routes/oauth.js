@@ -7,7 +7,7 @@ const invalidAuth = "Invalid authentication information"
 const invalidReq = "Invalid wallet request"
 
 const clients = {
-  "login": tkOAuth.genOauthClient(["openid"], "login"),
+  "login": tkOAuth.genOauthClient(["openid","https://auth.trustedkey.com/user_sign"], "login"),
   "register": tkOAuth.genOauthClient(["openid", "profile"], "register"),
   "issue": tkOAuth.genOauthClient(["openid"], "issue")
 }
