@@ -9,12 +9,18 @@ const invalidReq = "Invalid wallet request"
 const clients = {
   "login": tkOAuth.genOauthClient(["openid","https://auth.trustedkey.com/user_sign"], "login"),
   "register": tkOAuth.genOauthClient(["openid", "profile"], "register"),
-  "issue": tkOAuth.genOauthClient(["openid"], "issue")
+  "issue": tkOAuth.genOauthClient(["openid"], "issue"),
+
 }
 
 let genRoute = flow => (req, res) => {
   let useClaims = flow == "issue"
   return res.redirect(tkOAuth.getAuthUri(clients[flow], req.query, useClaims))
+}
+let httpnotify= async (req,res) =>{
+  console.log(req.url)
+    res.status(200).send()
+    return
 }
 
 let callback = async(req, res) => {
@@ -67,9 +73,11 @@ let callback = async(req, res) => {
   }
 }
 
+
 router.get("/login/:login_hint?", genRoute("login"))
 router.get("/register/:login_hint?", genRoute("register"))
 router.get("/issue/:login_hint?", genRoute("issue"))
 router.get(config.callbackRoute, callback)
+router.get("/httpnotify")
 
 module.exports = router
