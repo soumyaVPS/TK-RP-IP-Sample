@@ -19,8 +19,8 @@ let genRoute = flow => (req, res) => {
 }
 let httpnotify= async (req,res) =>{
   console.log(req.url)
-    res.status(200).send("Got notified "+ req.params)
-    return
+    return res.status(200).send("Got notified "+ req.params)
+
 }
 
 let callback = async(req, res) => {
