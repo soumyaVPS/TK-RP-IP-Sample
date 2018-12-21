@@ -19,8 +19,7 @@ let genRoute = flow => (req, res) => {
 }
 let httpnotify= async (req,res) =>{
   console.log(req.url)
-    return res.status(200).send("Got notified "+ req.params)
-
+    return res.status(200).send()
 }
 
 let callback = async(req, res) => {
@@ -78,6 +77,6 @@ router.get("/login/:login_hint?", genRoute("login"))
 router.get("/register/:login_hint?", genRoute("register"))
 router.get("/issue/:login_hint?", genRoute("issue"))
 router.get(config.callbackRoute, callback)
-router.get("/httpnotify")
+router.get("/httpnotify", httpnotify)
 
 module.exports = router
