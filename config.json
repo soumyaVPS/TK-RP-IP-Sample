@@ -1,5 +1,5 @@
 {
-  "host": "https://perf-tk-rp.herokuapp.com",
+  "host": "https://soumya-rp-ip-stg-example.herokuapp.com",
   "issuerServiceUrl": "https://issuer-stg.trustedkey.com",
   "walletServiceUrl": "https://wallet-stg.trustedkey.com",
   "callbackRoute": "/oauth/callback",
