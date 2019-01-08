@@ -7,7 +7,7 @@
   "env": {
     "HOST": {
       "description": "Change 'someappname' to the app name you chose above",
-      "value": "https://soumya-rp-ip.herokuapp.com"
+      "value": "https://perf-tk-rp.herokuapp.com"
     },
     "CLIENTID": {
       "description": "The client id registered on the trusted key devportal",
