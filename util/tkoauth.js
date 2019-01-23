@@ -2,8 +2,13 @@ const ClientOAuth2 = require('client-oauth2')
 const Url = require("url")
 const rp = require("request-promise-native")
 const config = require("../config")
-const claims = config.claims
+const claims = process.env.CLAIMS || config.claims
 const host = process.env.HOST || config.host
+const walletServiceUrl = process.env.walletServiceUrl||config.walletServiceUrl
+console.log ("walletServiceUrl :", walletServiceUrl)
+console.log ("host :", host)
+console.log("clientid", config.clientId)
+console.log("clientsecret",config.clientSecret)
 const clientId = process.env.CLIENTID || config.clientId
 const clientSecret = process.env.CLIENTSECRET || config.clientSecret
 
@@ -28,8 +33,8 @@ let genClaims = () => {
 var genOauthClient = (scopes, state) => new ClientOAuth2({
   clientId: clientId,
   clientSecret: clientSecret,
-  accessTokenUri: Url.resolve(config.walletServiceUrl, '/oauth/token'),
-  authorizationUri: Url.resolve(config.walletServiceUrl, '/oauth/authorize'),
+  accessTokenUri: Url.resolve(walletServiceUrl, '/oauth/token'),
+  authorizationUri: Url.resolve(walletServiceUrl, '/oauth/authorize'),
   redirectUri: Url.resolve(host, config.callbackRoute),
   scopes: scopes,
   state: state
@@ -48,7 +53,7 @@ var getCallbackToken = async (oauthClient, originalUrl) => {
   let tok = await oauthClient.code.getToken(originalUrl)
   let accessToken = tok.accessToken
   return await rp({
-    uri: Url.resolve(config.walletServiceUrl, '/oauth/user'),
+    uri: Url.resolve(walletServiceUrl, '/oauth/user'),
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + accessToken

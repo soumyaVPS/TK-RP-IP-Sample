@@ -2,7 +2,7 @@ const IssuerService = require(
   'trustedkey-js/services/trustedkeyissuerservice')
 const config = require("../config")
 
-const url = config.issuerServiceUrl
+const url = process.env.issuerServiceUrl ||  config.issuerServiceUrl
 const clientId = process.env.CLIENTID || config.clientId
 const clientSecret = process.env.CLIENTSECRET || config.clientSecret
 const issuerService = new IssuerService(url, clientId, clientSecret)
