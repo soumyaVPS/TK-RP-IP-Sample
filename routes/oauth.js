@@ -14,7 +14,9 @@ const clients = {
 
 let genRoute = flow => (req, res) => {
   let useClaims = flow == "issue"
-  return res.redirect(tkOAuth.getAuthUri(clients[flow], req.query, useClaims))
+  let uri = tkOAuth.getAuthUri(clients[flow], req.query, useClaims)
+  console.log(uri)
+  return res.redirect(uri)
 }
 
 let callback = async(req, res) => {
