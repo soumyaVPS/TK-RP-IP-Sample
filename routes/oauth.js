@@ -15,7 +15,7 @@ const clients = {
 let genRoute = flow => (req, res) => {
   let useClaims = flow == "issue"
   let uri = tkOAuth.getAuthUri(clients[flow], req.query, useClaims)
-  console.log(uri)
+  console.log("Oauth Uri /authorize", uri)
   return res.redirect(uri)
 }
 
@@ -31,6 +31,7 @@ let callback = async(req, res) => {
   let token = null
   try {
     token = await tkOAuth.getCallbackToken(clients[state], req.originalUrl)
+    console.log("oauth/callback token:", token)
   } catch (e) {
     console.error(e.message)
     res.status(403).send(invalidReq)
