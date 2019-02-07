@@ -1,7 +1,7 @@
 {
   "host": "https://perf-tk-rp.herokuapp.com",
   "issuerServiceUrl": "https://issuer-stg.trustedkey.com",
-  "walletServiceUrl": "https://perfwalletstg.stg.trustedkey.io",
+  "walletServiceUrl": "https://wallet-stg.trustedkey.com",
   "callbackRoute": "/oauth/callback",
   "clientId": "4df771e1-cbcd-4eae-9b0a-bee60266da2c",
   "clientSecret": "GENohxsjD1ZpwSifbjR7F7TZ_0_SaiIkG9iE9i5bELg",
