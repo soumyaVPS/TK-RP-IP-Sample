@@ -1,16 +1,16 @@
 const ClientOAuth2 = require('client-oauth2')
 const Url = require("url")
 const rp = require("request-promise-native")
-const config = require("../config")
-const claims = process.env.CLAIMS || config.claims
-const host = process.env.HOST || config.host
-const walletServiceUrl = process.env.walletServiceUrl||config.walletServiceUrl
+
+const claims = ["https://auth.trustedkey.com/publicKey"]
+const host = process.env.HOST
+const walletServiceUrl = process.env.WALLETSERVICEURL
 console.log ("walletServiceUrl :", walletServiceUrl)
 console.log ("host :", host)
-console.log("clientid", config.clientId)
-console.log("clientsecret",config.clientSecret)
-const clientId = process.env.CLIENTID || config.clientId
-const clientSecret = process.env.CLIENTSECRET || config.clientSecret
+
+
+const clientId = process.env.CLIENTID
+const clientSecret = process.env.CLIENTSECRET
 
 /*
  * Generic helper method used to generate claims
@@ -35,7 +35,7 @@ var genOauthClient = (scopes, state) => new ClientOAuth2({
   clientSecret: clientSecret,
   accessTokenUri: Url.resolve(walletServiceUrl, '/oauth/token'),
   authorizationUri: Url.resolve(walletServiceUrl, '/oauth/authorize'),
-  redirectUri: Url.resolve(host, config.callbackRoute),
+  redirectUri: Url.resolve(host, process.env.CALLBACKROUTE),
   scopes: scopes,
   state: state
 })

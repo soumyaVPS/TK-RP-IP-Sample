@@ -52,7 +52,9 @@ let callback = async(req, res) => {
   `
   if (state != "issue") return res.send(tokenMSG)
   try {
-    let publicKey = token[config.claims[0]]
+    const claims = ["https://auth.trustedkey.com/publicKey"]
+
+    let publicKey = token[claims[0]]
     console.log("Got Public key: ", publicKey)
     const claimValues = {
       name: "Bob A. Smith",
@@ -73,6 +75,7 @@ let callback = async(req, res) => {
 router.get("/login/:login_hint?", genRoute("login"))
 router.get("/register/:login_hint?", genRoute("register"))
 router.get("/issue/:login_hint?", genRoute("issue"))
-router.get(config.callbackRoute, callback)
+callbackRoute = process.env.CALLBACKROUTE
+router.get(callbackRoute, callback)
 
 module.exports = router

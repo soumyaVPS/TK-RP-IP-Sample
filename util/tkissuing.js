@@ -1,10 +1,10 @@
 const IssuerService = require(
   'trustedkey-js/services/trustedkeyissuerservice')
-const config = require("../config")
 
-const url = process.env.issuerServiceUrl ||  config.issuerServiceUrl
-const clientId = process.env.CLIENTID || config.clientId
-const clientSecret = process.env.CLIENTSECRET || config.clientSecret
+
+const url = process.env.ISSUERSERVICEURL
+const clientId = process.env.CLIENTID
+const clientSecret = process.env.CLIENTSECRET
 const issuerService = new IssuerService(url, clientId, clientSecret)
 console.log("Coinfiguration: ", url,clientId,clientSecret, issuerService)
 /*
@@ -13,7 +13,7 @@ console.log("Coinfiguration: ", url,clientId,clientSecret, issuerService)
  */
 var issue = (publicKey, attrs) => {
   let expiry = new Date()
-  expiry.setFullYear(expiry.getFullYear() + config.expiryYears)
+  expiry.setFullYear(expiry.getFullYear() + 10)
   return issuerService.requestImageClaims({
     'attributes': attrs,
     'expiry': expiry,
