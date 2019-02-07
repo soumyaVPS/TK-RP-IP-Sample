@@ -1,10 +1,10 @@
 {
-  "host": "https://soumya-rp-ip-example.herokuapp.com",
-  "issuerServiceUrl": "https://issuer.trustedkey.com",
-  "walletServiceUrl": "https://wallet.trustedkey.com",
+  "host": "https://perf-tk-rp.herokuapp.com",
+  "issuerServiceUrl": "https://issuer-stg.trustedkey.com",
+  "walletServiceUrl": "https://perfwalletstg.stg.trustedkey.io",
   "callbackRoute": "/oauth/callback",
-  "clientId": "0cf24443-5eb7-43e0-bda1-817fe741598f",
-  "clientSecret": "WRQntocJzNv0xZN3tvCWc5DdLurwV8Xm_zp9C_b0Qm8",
+  "clientId": "4df771e1-cbcd-4eae-9b0a-bee60266da2c",
+  "clientSecret": "GENohxsjD1ZpwSifbjR7F7TZ_0_SaiIkG9iE9i5bELg",
   "claims": ["https://auth.trustedkey.com/publicKey"],
   "port": 80,
   "expiryYears": 10
