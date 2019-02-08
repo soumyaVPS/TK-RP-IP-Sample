@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const tkOAuth = require("../util/tkoauth")
 const tkIssuing = require("../util/tkissuing")
-const config = require("../config")
+
 
 const invalidAuth = "Invalid authentication information"
 const invalidReq = "Invalid wallet request"
