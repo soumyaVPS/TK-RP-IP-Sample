@@ -22,6 +22,7 @@ let genClaims = (claims) => {
     dict[claim] = null
     return dict
   }, {})
+  console.log(userinfo)
   return JSON.stringify({
     userinfo: userinfo
   })
