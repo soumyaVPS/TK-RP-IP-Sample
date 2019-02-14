@@ -82,7 +82,7 @@ let callback = async(req, res) => {
 router.get("/login/:login_hint?", genRoute("login"))
 router.get("/register/:login_hint?", genRoute("register"))
 router.get("/issue/:login_hint?", genRoute("issue"))
-router.get("requestClaims/:login_hint?", genRoute("requestClaims"))
+router.get("/requestClaims/:login_hint?", genRoute("requestClaims"))
 callbackRoute = process.env.CALLBACKROUTE
 router.get(callbackRoute, callback)
 
