@@ -2,7 +2,7 @@ const ClientOAuth2 = require('client-oauth2')
 const Url = require("url")
 const rp = require("request-promise-native")
 
-const claims = ["https://auth.trustedkey.com/publicKey"]
+
 const host = process.env.HOST
 const walletServiceUrl = process.env.WALLETSERVICEURL
 console.log ("walletServiceUrl :", walletServiceUrl)
@@ -17,7 +17,7 @@ const clientSecret = process.env.CLIENTSECRET
  * Used for showing how to generate claims for a larger list
  * of claims
  */
-let genClaims = () => {
+let genClaims = (claims) => {
   let userinfo = claims.reduce((dict, claim) => {
     dict[claim] = null
     return dict
@@ -40,13 +40,13 @@ var genOauthClient = (scopes, state) => new ClientOAuth2({
   state: state
 })
 
-var getAuthUri = (oauthClient, query, useClaims) => {
-  useClaims = useClaims || false
+var getAuthUri = (oauthClient, query, claims) => {
   query = query || {}
-  if (useClaims) query.claims = genClaims()
+  if (claims != null) query.claims = genClaims(claims)
   return oauthClient.code.getUri({
     query: query
   })
+
 }
 
 var getCallbackToken = async (oauthClient, originalUrl) => {

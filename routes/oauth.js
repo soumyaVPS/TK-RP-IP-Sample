@@ -7,14 +7,28 @@ const invalidAuth = "Invalid authentication information"
 const invalidReq = "Invalid wallet request"
 
 const clients = {
-  "login": tkOAuth.genOauthClient(["openid"], "login"),
+  "login": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "login"),
   "register": tkOAuth.genOauthClient(["openid", "profile"], "register"),
-  "issue": tkOAuth.genOauthClient(["openid"], "issue")
+  "issue": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "issue"),
+  "requestClaims": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "requestClaims")
 }
-
+const pubkeylaim = ["https://auth.trustedkey.com/publicKey"]
+const userInfoClaimValues = {
+  name: "Bob A. Smith",
+  given_name: "Bob",
+  family_name: "Smith",
+  gender: "Male",
+  birthdate: "120101000000Z"
+}
 let genRoute = flow => (req, res) => {
-  let useClaims = flow == "issue"
-  let uri = tkOAuth.getAuthUri(clients[flow], req.query, useClaims)
+  let claims = null
+  if(flow == "issue")
+  {
+      claims = pubkeyclaims
+  }else if(flow === "requestClaims"){
+      claims = userInfoClaimValues
+  }
+  let uri = tkOAuth.getAuthUri(clients[flow], req.query, claims)
   console.log("Oauth Uri /authorize", uri)
   return res.redirect(uri)
 }
@@ -52,22 +66,14 @@ let callback = async(req, res) => {
   `
   if (state != "issue") return res.send(tokenMSG)
   try {
-    const claims = ["https://auth.trustedkey.com/publicKey"]
-
+    const claims = ["https://auth.trustedkey.c iju
     let publicKey = token[claims[0]]
     console.log("Got Public key: ", publicKey)
-    const claimValues = {
-      name: "Bob A. Smith",
-      given_name: "Bob",
-      family_name: "Smith",
-      gender: "Male",
-      birthdate: "120101000000Z"
-    }
-    await tkIssuing.issue(publicKey, claimValues)
-    res.send("<p>Claims were issued!</p>" + tokenMSG)
+    await tkIssuing.issue(publicKey, claimValu iju
+    res.send("<p>Claims were issued!</p>" + to iju
   } catch (e) {
     console.error(e.message)
-    const msg = "Error: Could not issue claims. If you do not have any internal syntax errors, then please ensure you have requested issuing features on devportal"
+    const msg = "Error: Could not issue claims ijual syntax errors, then please ensure you have requested issuing features on devportal"
     res.status(500).send(msg)
   }
 }
@@ -75,6 +81,7 @@ let callback = async(req, res) => {
 router.get("/login/:login_hint?", genRoute("login"))
 router.get("/register/:login_hint?", genRoute("register"))
 router.get("/issue/:login_hint?", genRoute("issue"))
+router.get("requestClaims/:login_hint?", genRoute("requestClaims"))
 callbackRoute = process.env.CALLBACKROUTE
 router.get(callbackRoute, callback)
 
