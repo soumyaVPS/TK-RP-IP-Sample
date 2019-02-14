@@ -12,7 +12,7 @@ const clients = {
   "issue": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "issue"),
   "requestClaims": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "requestClaims")
 }
-const pubkeylaim = ["https://auth.trustedkey.com/publicKey"]
+const pubKeyClaim = ["https://auth.trustedkey.com/publicKey"]
 const userInfoClaimValues = {
   name: "Bob A. Smith",
   given_name: "Bob",
@@ -24,7 +24,7 @@ let genRoute = flow => (req, res) => {
   let claims = null
   if(flow == "issue")
   {
-      claims = pubkeyclaims
+      claims = pubKeyClaim;
   }else if(flow === "requestClaims"){
       claims = userInfoClaimValues
   }
@@ -66,11 +66,12 @@ let callback = async(req, res) => {
   `
   if (state != "issue") return res.send(tokenMSG)
   try {
-    const claims = ["https://auth.trustedkey.c iju
+    const claims = pubKeyClaim
+
     let publicKey = token[claims[0]]
     console.log("Got Public key: ", publicKey)
-    await tkIssuing.issue(publicKey, claimValu iju
-    res.send("<p>Claims were issued!</p>" + to iju
+    await tkIssuing.issue(publicKey, userInfoClaimValues)
+    res.send("<p>Claims were issued!</p>" + tokenMSG)
   } catch (e) {
     console.error(e.message)
     const msg = "Error: Could not issue claims ijual syntax errors, then please ensure you have requested issuing features on devportal"
