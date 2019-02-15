@@ -22,11 +22,13 @@ const userInfoClaimValues = {
 }
 let genRoute = flow => (req, res) => {
   let claims = null
-  if(flow == "issue")
+  if(flow == "issue" )
   {
       claims = pubKeyClaim;
-  }else if(flow === "requestClaims"){
-      claims = userInfoClaimValues
+  }
+  else if(flow === "requestClaims")
+  {
+    claims = Object.keys(userInfoClaimValues)
   }
   let uri = tkOAuth.getAuthUri(clients[flow], req.query, claims)
   console.log("Oauth Uri /authorize", uri)
@@ -66,12 +68,12 @@ let callback = async(req, res) => {
   `
   if (state != "issue") return res.send(tokenMSG)
   try {
-    const claims = pubKeyClaim
 
-    let publicKey = token[claims[0]]
-    console.log("Got Public key: ", publicKey)
-    await tkIssuing.issue(publicKey, userInfoClaimValues)
-    res.send("<p>Claims were issued!</p>" + tokenMSG)
+      const claims = pubKeyClaim
+      let publicKey = token[claims[0]]
+      console.log("Got Public key: ", publicKey)
+      await tkIssuing.issue(publicKey, userInfoClaimValues)
+      res.send("<p>Claims were issued!</p>" + tokenMSG)
   } catch (e) {
     console.error(e.message)
     const msg = "Error: Could not issue claims ijual syntax errors, then please ensure you have requested issuing features on devportal"
