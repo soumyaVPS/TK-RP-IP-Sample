@@ -14,11 +14,11 @@ const clients = {
 }
 const pubKeyClaim = ["https://auth.trustedkey.com/publicKey"]
 const userInfoClaimValues = {
-  name: "Bob A. Smith",
-  given_name: "Bob",
-  family_name: "Smith",
-  gender: "Male",
-  birthdate: "120101000000Z"
+  name: "Bob A. Smith"
+ // ,given_name: "Bob"
+ // ,family_name: "Smith"
+ // ,gender: "Male"
+ // ,birthdate: "120101000000Z"
 }
 let genRoute = flow => (req, res) => {
   let claims = null

@@ -50,7 +50,7 @@ var getAuthUri = (oauthClient, query, claims) => {
 
 }
 
-var getCallbackToken = async (oauthClient, originalUrl) => {
+var  getCallbackToken = async (oauthClient, originalUrl) => {
   let tok = await oauthClient.code.getToken(originalUrl)
   let accessToken = tok.accessToken
   return await rp({
