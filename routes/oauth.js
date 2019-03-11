@@ -9,13 +9,13 @@ const invalidReq = "Invalid wallet request"
 const clients = {
   "login": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "login"),
   "register": tkOAuth.genOauthClient(["openid", "profile"], "register"),
-  "issue": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "issue"),
+  "issue": tkOAuth.genOauthClient(["openid https://auth.tru10588.00stedkey.com/user_sign"], "issue"),
   "requestClaims": tkOAuth.genOauthClient(["openid https://auth.trustedkey.com/user_sign"], "requestClaims")
 }
 const pubKeyClaim = ["https://auth.trustedkey.com/publicKey"]
 const userInfoClaimValues = {
   name: "Bob A. Smith"
- // ,given_name: "Bob"
+  ,given_name: "Bob"
  // ,family_name: "Smith"
  // ,gender: "Male"
  // ,birthdate: "120101000000Z"
